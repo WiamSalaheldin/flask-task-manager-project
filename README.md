@@ -23,10 +23,10 @@ This project demonestrate my skills on flask using MongoDb
 
 __screen blueprint__
 
-<img src="static/images/task1.PNG">
-<img src="static/images/task2.PNG">
-<img src="static/images/task3.PNG">
-<img src="static/images/task4.PNG">
-<img src="static/images/task5.PNG">
+<img src="static/css/task1.PNG">
+<img src="static/css/task2.PNG">
+<img src="static/css/task3.PNG">
+<img src="static/css/task4.PNG">
+<img src="static/css/task5.PNG">
 
 [__Click__](http://flask-task-manager-project-wia.herokuapp.com/get_tasks)
