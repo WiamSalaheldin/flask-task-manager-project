@@ -29,4 +29,4 @@ __screen blueprint__
 <img src="static/css/task4.PNG">
 <img src="static/css/task5.PNG">
 
-[__Click__](http://flask-task-manager-project-wia.herokuapp.com/get_tasks)
+[__Click Here__](http://flask-task-manager-project-wia.herokuapp.com/get_tasks)
