@@ -40,9 +40,15 @@ def register():
             {"username": request.form.get("username").lower()})
 
         if existing_user:
+            # redirect the user back to the url_for(
+            # ) this same 'register' function,
             flash("Username already exists")
             return redirect(url_for("register"))
+        #  first item in our dictionary will be "username", and that will
+        # be set to grab the username
+        # value from our form, using the name="" attribute.
 
+        # store this into the database as lowercase letters.
         register = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password"))
@@ -109,6 +115,7 @@ def logout():
 @app.route("/add_task", methods=["GET", "POST"])
 def add_task():
     if request.method == "POST":
+        # generate an <option> instance for each category in our collection
         is_urgent = "on" if request.form.get("is_urgent") else "off"
         task = {
             "category_name": request.form.get("category_name"),
@@ -138,18 +145,22 @@ def edit_task(task_id):
             "due_date": request.form.get("due_date"),
             "created_by": session["user"]
         }
+        # search for a task in the database by the task ID
         mongo.db.tasks.update({"_id": ObjectId(task_id)}, submit)
         flash("Task Successfully Updated")
 
     task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
+    # take the user back to the same edit page
     return render_template("edit_task.html", task=task, categories=categories)
 
 
 @app.route("/delete_task/<task_id>")
 def delete_task(task_id):
+    # get the specific task by the ObjectId
     mongo.db.tasks.remove({"_id": ObjectId(task_id)})
     flash("Task Successfully Deleted")
+    #  redirect the user back to our primary function for the home page
     return redirect(url_for("get_tasks"))
 
 
